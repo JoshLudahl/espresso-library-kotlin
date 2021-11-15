@@ -26,7 +26,7 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 }
 
-def elk_version = '0.05.0'
+def elk_version = '0.06.0'
 
 afterEvaluate {
     publishing {
@@ -35,7 +35,7 @@ afterEvaluate {
                 from components.release
 
                 groupId = 'com.github.joshludahl'
-                artifactId = 'elk'
+                artifactId = 'espresso-library-kotlin'
                 version = "$elk_version"
             }
 
@@ -43,7 +43,7 @@ afterEvaluate {
                 from components.debug
 
                 groupId = 'com.github.joshludahl'
-                artifactId = 'elk'
+                artifactId = 'espresso-library-kotlin'
                 version = "$elk_version"
             }
         }
