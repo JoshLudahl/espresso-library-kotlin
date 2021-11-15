@@ -20,10 +20,36 @@ dependencies {
 
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.3.1'
-    implementation 'com.google.android.material:material:1.4.0'
-    testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+
+    api "androidx.core:core-ktx:$androidx_core_ktx_version"
+    api "androidx.appcompat:appcompat:$appcompat_version"
+    api "androidx.lifecycle:lifecycle-extensions:$archLifecycleVersion"
+    api "com.google.android.material:material:$material_version"
+
+    // JUnit
+    api "junit:junit:$junit4_version"
+    api "androidx.test.ext:junit:$test_junit_version"
+    api "org.junit:junit-bom:$junit5_version"
+    api "org.junit.vintage:junit-vintage-engine:$junit5_version"
+    api "org.junit.jupiter:junit-jupiter"
+
+    api "androidx.test:runner:$androidx_test_version"
+    api "androidx.test:rules:$androidx_test_version"
+
+    // Espresso libraries
+    api "androidx.test.espresso:espresso-accessibility:$espresso_version"
+    api "androidx.test.espresso:espresso-contrib:$espresso_version"
+    api "androidx.test.espresso:espresso-core:$espresso_version"
+    api "androidx.test.espresso:espresso-idling-resource:$espresso_version"
+    api "androidx.test.espresso:espresso-intents:$espresso_version"
+    api "androidx.test.espresso:espresso-remote:$espresso_version"
+    api "androidx.test.espresso:espresso-web:$espresso_version"
+    api "androidx.test.espresso.idling:idling-concurrent:$espresso_version"
+    api "androidx.test.uiautomator:uiautomator:$uiautomator_version"
+    api "androidx.test:rules:$androidx_test_version"
+    api "androidx.test:runner:$androidx_test_version"
+    api "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
 }
 
 def elk_version = '0.06.0'
