@@ -1,4 +1,4 @@
-package com.android.elk.common
+package com.softklass.elk.common
 
 @Target(
     AnnotationTarget.FUNCTION,

@@ -1,4 +1,4 @@
-package com.android.elk.espresso.lib
+package com.softklass.elk.espresso.lib
 
 import androidx.test.espresso.idling.CountingIdlingResource
 

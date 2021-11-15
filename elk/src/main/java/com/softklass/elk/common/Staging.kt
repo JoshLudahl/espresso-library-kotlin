@@ -1,4 +1,4 @@
-package com.android.elk.common
+package com.softklass.elk.common
 
 import android.view.View
 import android.widget.TextView
@@ -11,8 +11,8 @@ import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.BoundedMatcher
 import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.platform.app.InstrumentationRegistry
-import com.android.elk.espresso.verify
-import com.android.elk.espresso.view
+import com.softklass.elk.espresso.verify
+import com.softklass.elk.espresso.view
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import org.hamcrest.CoreMatchers.not
 import org.hamcrest.Description

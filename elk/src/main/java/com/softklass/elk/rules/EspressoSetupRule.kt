@@ -1,10 +1,10 @@
-package com.android.elk.rules
+package com.softklass.elk.rules
 
 import androidx.test.espresso.IdlingRegistry
 import androidx.test.espresso.intent.Intents
 import androidx.test.ext.junit.rules.ActivityScenarioRule
-import com.android.elk.espresso.lib.DataBindingIdlingResource
-import com.android.elk.espresso.lib.EspressoIdlingResource
+import com.softklass.elk.espresso.lib.DataBindingIdlingResource
+import com.softklass.elk.espresso.lib.EspressoIdlingResource
 import org.junit.rules.TestWatcher
 import org.junit.runner.Description
 

@@ -1,4 +1,4 @@
-package com.android.elk.espresso
+package com.softklass.elk.espresso
 
 import android.graphics.Rect
 import android.util.Log

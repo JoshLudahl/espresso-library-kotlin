@@ -1,4 +1,4 @@
-package com.android.elk.rules
+package com.softklass.elk.rules
 
 import org.junit.rules.TestRule
 import org.junit.runner.Description

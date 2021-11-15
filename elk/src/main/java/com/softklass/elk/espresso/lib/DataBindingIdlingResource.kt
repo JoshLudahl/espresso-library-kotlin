@@ -1,4 +1,4 @@
-package com.android.elk.espresso.lib
+package com.softklass.elk.espresso.lib
 
 import android.app.Activity
 import android.view.View
