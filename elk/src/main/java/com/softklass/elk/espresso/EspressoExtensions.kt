@@ -24,8 +24,7 @@ enum class ResourceType {
     RESOURCE_ID, RESOURCE_STRING
 }
 
-val Int.resType: ResourceType
-    get() = when (
+val Int.resType: ResourceType get() = when (
         targetContext
             .resources
             .getResourceTypeName(this)
@@ -150,7 +149,6 @@ fun <T> view(element: T): Matcher<View> = when (element) {
     is String -> withText(element)
     else -> throw NoSuchElementException("No matching type.")
 }
-
 
 /**
  * View Matcher - matches a view with a class
