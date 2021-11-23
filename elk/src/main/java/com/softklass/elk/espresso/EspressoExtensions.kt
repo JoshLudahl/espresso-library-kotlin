@@ -1,21 +1,17 @@
 package com.softklass.elk.espresso
 
 import android.annotation.SuppressLint
-import android.os.Build
 import android.util.NoSuchPropertyException
 import android.view.View
 import androidx.annotation.IdRes
-import androidx.annotation.StringRes
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.ViewAction
 import androidx.test.espresso.ViewInteraction
 import androidx.test.espresso.assertion.ViewAssertions
 import androidx.test.espresso.matcher.RootMatchers.withDecorView
 import androidx.test.espresso.matcher.ViewMatchers
-import androidx.test.filters.SdkSuppress
 import androidx.test.platform.app.InstrumentationRegistry
 import com.google.android.material.internal.ContextUtils.getActivity
-import com.softklass.elk.common.stringValue
 import com.softklass.elk.common.targetContext
 import org.hamcrest.Matcher
 import org.hamcrest.Matchers
@@ -26,7 +22,8 @@ enum class ResourceType {
     RESOURCE_ID, RESOURCE_STRING
 }
 
-val Int.resType: ResourceType get() = when (
+val Int.resType: ResourceType
+    get() = when (
         targetContext
             .resources
             .getResourceTypeName(this)
@@ -110,9 +107,8 @@ fun Matcher<View>.not(): Matcher<View> = not(this)
  * @param viewIds
  */
 fun checkViewsAreHidden(@IdRes vararg viewIds: Int) {
-    for (viewId in viewIds) {
-        onView(withId(viewId))
-            .check(ViewAssertions.matches(Matchers.not(ViewMatchers.isDisplayed())))
+    viewIds.forEach { view ->
+        view(view) verify isDisplayed.not()
     }
 }
 
@@ -127,12 +123,14 @@ fun bulkIsMatcherIsDisplayed(vararg viewIds: Matcher<View>): ViewInteraction =
         .check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
 
 /**
- * Takes in view matchers and checks if each one is displayed
+ * Takes in any type that is supported:
+ * - @StringRes, @IdRes, String, or Matcher<View>
+ * And verifies if the view is displayed.
  * @param views
  */
-fun viewsAreDisplayed(vararg views: Matcher<View>) {
-    for (view in views) {
-        view verify isDisplayed
+fun <T> viewsAreDisplayed(vararg views: T) {
+    views.forEach { view ->
+        view(view) verify isDisplayed
     }
 }
 
@@ -169,46 +167,6 @@ fun view(clazz: Class<out View>): Matcher<View> = ViewMatchers.isAssignableFrom(
 fun view(vararg matchers: Matcher<View>): Matcher<View> = allOf(*matchers)
 
 /**
- * Checks a varable number of arguments of type Int that is a string from a string value
- *
- * @param viewIds
- */
-fun checkTextsAreHidden(@StringRes vararg viewIds: Int) {
-    for (viewId in viewIds) {
-        onView(withText(targetContext stringValue viewId))
-            .check(ViewAssertions.matches(Matchers.not(ViewMatchers.isDisplayed())))
-    }
-}
-
-/**
- * Checks a variable number of arguments of type id resource for the hidden assertion
- * from a Matcher receiver
- *
- * @param viewIds
- */
-fun Matcher<View>.checkViewsAreHidden(@IdRes vararg viewIds: Int) {
-    with(onView(this)) {
-        for (view in viewIds) {
-            check(matches(ViewMatchers.hasDescendant(withId(view))))
-        }
-    }
-}
-
-/**
- * Checks a variable number of arguments of id resource Int for the hidden assertion
- * from a ViewInteraction receiver
- *
- * @param viewIds
- */
-fun ViewInteraction.checkViewsAreHidden(@IdRes vararg viewIds: Int) {
-    with(this) {
-        for (view in viewIds) {
-            check(ViewAssertions.matches(ViewMatchers.hasDescendant(withId(view))))
-        }
-    }
-}
-
-/**
  * Checks that a given toast is displayed
  * Takes either a String resource or a String literal as a parameter
  *
@@ -219,18 +177,17 @@ fun ViewInteraction.checkViewsAreHidden(@IdRes vararg viewIds: Int) {
 @SuppressLint("RestrictedApi")
 fun <T> toastMatcher(message: T) {
     val context = InstrumentationRegistry.getInstrumentation().context
-    onView(
-        when (message) {
-            is Int -> withText(message)
-            is String -> withText(message)
-            else -> throw NoSuchElementException("No such element.")
-        }
-    )
+    onView(view(message))
         .inRoot(
-            withDecorView(not(Matchers.`is`(getActivity(context)?.window?.decorView)))
-        ).check(
-            ViewAssertions.matches(
-                ViewMatchers.isDisplayed()
+            withDecorView(
+                not(
+                    Matchers.`is`(
+                        getActivity(context)
+                            ?.window
+                            ?.decorView
+                    )
+                )
             )
         )
+        .check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
 }
