@@ -5,6 +5,7 @@ import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.ViewAssertion
 import androidx.test.espresso.ViewInteraction
 import androidx.test.espresso.assertion.ViewAssertions
+import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.espresso.matcher.ViewMatchers.*
 import org.hamcrest.Matcher
@@ -22,6 +23,8 @@ fun Int.isDisplayed(): ViewInteraction =
     onView(withId(this)).check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
 
 val isDisplayed: Matcher<View> = ViewMatchers.isDisplayed()
+val assertIsDisplayed: ViewAssertion = matches(ViewMatchers.isDisplayed())
+
 
 /**
  *  Extension functions for [ViewMatchers.isCompletelyDisplayed()] for [ViewAssertion.matches()]
