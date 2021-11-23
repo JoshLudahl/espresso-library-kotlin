@@ -1,6 +1,7 @@
 package com.softklass.elk.espresso
 
 import android.annotation.SuppressLint
+import android.os.Build
 import android.util.NoSuchPropertyException
 import android.view.View
 import androidx.annotation.IdRes
@@ -11,6 +12,7 @@ import androidx.test.espresso.ViewInteraction
 import androidx.test.espresso.assertion.ViewAssertions
 import androidx.test.espresso.matcher.RootMatchers.withDecorView
 import androidx.test.espresso.matcher.ViewMatchers
+import androidx.test.filters.SdkSuppress
 import androidx.test.platform.app.InstrumentationRegistry
 import com.google.android.material.internal.ContextUtils.getActivity
 import com.softklass.elk.common.stringValue
@@ -209,6 +211,8 @@ fun ViewInteraction.checkViewsAreHidden(@IdRes vararg viewIds: Int) {
 /**
  * Checks that a given toast is displayed
  * Takes either a String resource or a String literal as a parameter
+ *
+ * This does not currently work on API 30+
  *
  * @param message of generic type
  */
