@@ -10,27 +10,13 @@ android {
     defaultConfig {
         minSdk 23
         targetSdk 33
-
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        consumerProguardFiles "consumer-rules.pro"
-    }
-
-    buildFeatures {
-        viewBinding true
-        dataBinding true
     }
 }
 
 dependencies {
-
-    implementation 'androidx.core:core-ktx:1.9.0'
-    implementation 'androidx.appcompat:appcompat:1.5.1'
-
     api "androidx.core:core-ktx:$androidx_core_ktx_version"
-    api "androidx.appcompat:appcompat:$appcompat_version"
-    api "androidx.lifecycle:lifecycle-extensions:$archLifecycleVersion"
 
-    // JUnit
+    // JUni
     api "junit:junit:$junit4_version"
     api "androidx.test.ext:junit:$test_junit_version"
     api "org.junit:junit-bom:$junit5_version"
@@ -53,10 +39,9 @@ dependencies {
     api "androidx.test:rules:$androidx_test_version"
     api "androidx.test:runner:$androidx_test_runner_version"
     api "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-
 }
 
-def elk_version = '0.10.0'
+def elk_version = '0.12.0'
 
 afterEvaluate {
     publishing {
