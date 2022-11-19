@@ -45,29 +45,7 @@ infix fun Matcher<View>.check(assertion: Matcher<View>): ViewInteraction =
 infix fun Matcher<View>.perform(action: ViewAction): ViewInteraction =
     onView(this).perform(action)
 
-class SampleTest {
 
-    @Test
-    fun sampleTestFunction() {
-        screen<SampleObject> {
-            sampleFunction()
-        }
-
-        @Given("I am on the main screen")
-        @When("I do simpleFunction")
-        (operation<SampleObject> {
-        sampleFunction()
-    })
-
-        @Then("the simpleFunction is displayed")
-        (verify<SampleObject> {
-        sampleFunction()
-    })
-        view("some link") perform click
-        view("some text1") check isDisplayed
-        view("some text2") check isDisplayed.not()
-    }
-}
 
 class SampleObject {
     fun sampleFunction() {
