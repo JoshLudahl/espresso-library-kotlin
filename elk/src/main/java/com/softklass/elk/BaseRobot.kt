@@ -5,15 +5,7 @@ import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.ViewAction
 import androidx.test.espresso.ViewInteraction
 import androidx.test.espresso.assertion.ViewAssertions
-import com.softklass.elk.common.Given
-import com.softklass.elk.common.Then
-import com.softklass.elk.common.When
-import com.softklass.elk.espresso.click
-import com.softklass.elk.espresso.isDisplayed
-import com.softklass.elk.espresso.not
-import com.softklass.elk.espresso.view
 import org.hamcrest.Matcher
-import org.junit.Test
 
 // Generic Screen
 inline fun <reified T: Any> screen(init: T.() -> Unit): T? =
@@ -44,8 +36,6 @@ infix fun Matcher<View>.check(assertion: Matcher<View>): ViewInteraction =
  */
 infix fun Matcher<View>.perform(action: ViewAction): ViewInteraction =
     onView(this).perform(action)
-
-
 
 class SampleObject {
     fun sampleFunction() {
