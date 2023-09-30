@@ -1,4 +1,4 @@
-[![](https://jitpack.io/v/JoshLudahl/ELK.svg)](https://jitpack.io/#JoshLudahl/ELK) [![Android CI](https://github.com/JoshLudahl/ELK/actions/workflows/android.yml/badge.svg)](https://github.com/JoshLudahl/ELK/actions/workflows/android.yml)
+[![](https://jitpack.io/v/JoshLudahl/espresso-library-kotlin.svg)](https://jitpack.io/#JoshLudahl/espresso-library-kotlin) [![Android CI](https://github.com/JoshLudahl/espresso-library-kotlin/actions/workflows/android.yml/badge.svg)](https://github.com/JoshLudahl/espresso-library-kotlin/actions/workflows/android.yml)
 # ELK
 ## Espresso Extension library written in Kotlin
 A simple extension library for Espresso with support for the page object design, or in this case, the Robot Pattern. This library is growing and more features to come.  There are a few ways to perform different actions and assertions as well as matching objects.
@@ -10,7 +10,7 @@ This library will not be maintained going forward. With Jetpack Compose, please 
 To include the library, add the following to your app module build.gradle file:
 ```groovy
 dependencies {
-    androidTestImplementation "com.github.JoshLudahl:ELK:$elk_version"
+    androidTestImplementation "com.github.JoshLudahl:espresso-library-kotlin:$elk_version"
 }
 ```
 And be sure to include jitpack in the repositories:
