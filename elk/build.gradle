@@ -64,7 +64,7 @@ dependencies {
 
 }
 
-def elk_version = '0.15.0'
+def elk_version = '2023.9.01'
 
 afterEvaluate {
     publishing {
