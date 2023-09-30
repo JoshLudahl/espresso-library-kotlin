@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace = "com.softklass.espresso-library-kotlin"
+    namespace = "com.softklass.elk"
     def target = 34
     compileSdk target
 
