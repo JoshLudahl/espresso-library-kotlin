@@ -5,11 +5,12 @@ plugins {
 }
 
 android {
-    compileSdk 33
+    def target = 34
+    compileSdk target
 
     defaultConfig {
         minSdk 23
-        targetSdk 33
+        targetSdkVersion target
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
@@ -22,15 +23,15 @@ android {
 
 dependencies {
 
-    implementation 'androidx.core:core-ktx:1.9.0'
-    implementation 'androidx.appcompat:appcompat:1.5.1'
+    implementation 'androidx.core:core-ktx:1.12.0'
+    implementation 'androidx.appcompat:appcompat:1.6.1'
 
     api "androidx.core:core-ktx:$androidx_core_ktx_version"
 
     // JUnit
     api "junit:junit:$junit4_version"
     api "androidx.test.ext:junit:$test_junit_version"
-    api "org.junit:junit-bom:$junit5_version"
+    api platform("org.junit:junit-bom:$junit5_version")
     api "org.junit.vintage:junit-vintage-engine:$junit5_version"
     api "org.junit.jupiter:junit-jupiter"
 
@@ -53,7 +54,7 @@ dependencies {
 
 }
 
-def elk_version = '0.14.0'
+def elk_version = '0.15.0'
 
 afterEvaluate {
     publishing {
