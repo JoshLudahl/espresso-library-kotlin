@@ -5,12 +5,13 @@ plugins {
 }
 
 android {
+    namespace = "com.softklass.espresso-library-kotlin"
     def target = 34
     compileSdk target
 
     defaultConfig {
-        minSdk 23
-        targetSdkVersion target
+        minSdk 24
+        targetSdk target
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
@@ -18,6 +19,15 @@ android {
 
     buildFeatures {
         dataBinding true
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    kotlinOptions {
+        jvmTarget = '17'
     }
 }
 
